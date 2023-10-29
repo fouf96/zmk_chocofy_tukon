@@ -1,0 +1,11 @@
+if tukon_left
+
+config ZMK_KEYBOARD_NAME
+    default "tukonL"
+
+if tukon_right
+
+config ZMK_KEYBOARD_NAME
+    default "tukonR"
+
+endif
