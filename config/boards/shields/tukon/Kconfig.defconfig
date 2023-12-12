@@ -13,8 +13,6 @@ if SHIELD_TUKON_LEFT || SHIELD_TUKON_RIGHT
 config ZMK_SPLIT
     default y
     
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
 
 if ZMK_DISPLAY
 
