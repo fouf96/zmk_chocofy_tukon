@@ -5,7 +5,7 @@ manifest:
   projects:
     - name: zmk
       remote: fouf96
-      revision: main
+      revision: playground
       import: app/west.yml
   self:
     path: config
