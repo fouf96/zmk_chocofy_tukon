@@ -1,11 +1,11 @@
 manifest:
   remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+    - name: fouf96
+      url-base: https://github.com/fouf96
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: fouf96
+      revision: playground
       import: app/west.yml
   self:
     path: config
