@@ -9,7 +9,7 @@
         led_pwr: ledpwr {
             compatible = "zmk,behavior-ext-power";
             #binding-cells = <1>;
-            power-node-name = "EXT_POWER";
+            power-node-name = "RGB_PWR";
         };
     };
         keymap {
