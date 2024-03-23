@@ -6,12 +6,11 @@
 / {
         behaviors {
         // Behavior can be invoked on peripherals, so name must be <= 8 characters.
-        // led_pwr: ledpwr {
-        //     compatible = "zmk,behavior-ext-power";
-        //     #binding-cells = <1>;
-        //     power-node-name = "RGB_PWR";
-
-        // };
+        led_pwr: ledpwr {
+            compatible = "zmk,behavior-ext-power";
+            #binding-cells = <1>;
+            power-node-name = "EXT_POWER";
+        };
     };
         keymap {
                 compatible = "zmk,keymap";
@@ -23,7 +22,7 @@
 // |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |
 //             | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         bindings = <
-   &ext_power EP_TOG &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P   
+   &led_pwr EP_TOG &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P   
    &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI
    &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH
         &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
