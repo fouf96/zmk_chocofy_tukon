@@ -40,7 +40,20 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)  RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
-    // TODO: per-key RGB node(s)?
+	
+    rgb_power_domain: rgb_power_domain {
+		compatible = "power-domain-gpio";
+		off-on-delay-us = <50000>;
+		enable-gpios = <&gpio0 9 GPIO_ACTIVE_HIGH>;
+		zephyr,pm-device-runtime-auto;
+	};
+
+    oled_power_domain: oled_power_domain {
+		compatible = "power-domain-gpio";
+		off-on-delay-us = <50000>;
+		enable-gpios = <&gpio1 6 GPIO_ACTIVE_HIGH>;
+		zephyr,pm-device-runtime-auto;
+	};
 };
 
 &pro_micro_i2c {
@@ -61,5 +74,7 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)  RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)
         com-sequential;
         prechargep = <0x22>;
         inversion-on;
+        power-domain = <&oled_power_domain>;
+		zephyr,pm-device-runtime-auto;
     };
 };
