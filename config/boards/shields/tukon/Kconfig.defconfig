@@ -6,12 +6,24 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
-endif
+endif # SHIELD_TUKON_LEFT
 
 if SHIELD_TUKON_LEFT || SHIELD_TUKON_RIGHT
 
 config ZMK_SPLIT
     default y
+
+config SHIELD_ZMK_TUKON_PM
+    bool "Tukon Automatic Power Management"
+    default y
+    select ZMK_POWER_DOMAINS
+    select ZMK_POWER_DOMAINS_DYNAMIC_DEFAULT
+    select PM_DEVICE
+    select PM_DEVICE_POWER_DOMAIN
+    select PM_DEVICE_RUNTIME
+    select POWER_DOMAIN
+    select POWER_DOMAIN_GPIO
+
     
 if ZMK_DISPLAY
 
@@ -40,4 +52,4 @@ endchoice
 
 endif # LVGL
 
-endif
+endif # SHIELD_TUKON_LEFT || SHIELD_TUKON_RIGHT

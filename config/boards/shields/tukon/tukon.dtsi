@@ -6,6 +6,27 @@
         zmk,battery = &vbatt;
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
+        zmk,display-default-power-domain = &core_power_domain;
+
+    };
+    
+    core_power_domain: core_power_domain {
+        // The "power-domain" compatible is needed for any PDs used for that have dynamic deps,
+        // e.g. for displays or RGB not assigned to the PD in the devicetree statically.
+        compatible = "power-domain-gpio", "power-domain";
+        startup-delay-us = <2000>;
+        off-on-delay-us = <2000>;
+        enable-gpios = <&arduino_header 0 GPIO_ACTIVE_LOW>;
+        zephyr,pm-device-runtime-auto;
+    };
+
+    rgb_power: rgb_power {
+        compatible = "power-domain-gpio";
+        startup-delay-us = <200>;
+        off-on-delay-us = <2000>;
+        enable-gpios = <&arduino_header 1 GPIO_ACTIVE_LOW>;
+        power-domain = <&core_power_domain>;
+        zephyr,pm-device-runtime-auto;
     };
 
     default_transform: keymap_transform_0 {
